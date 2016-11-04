@@ -1,7 +1,7 @@
 var context;
 var x=0;
 var y=0;
-var dx=5;
+var dx=15;
 var dy=0;
 
 function init()
