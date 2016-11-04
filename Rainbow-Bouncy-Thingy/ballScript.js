@@ -1,13 +1,13 @@
 var context;
 var x=0;
 var y=0;
-var dx=15;
+var dx=5;
 var dy=0;
 
 function init()
 {
   context= Canvas.getContext('2d');
-  setInterval(draw,2);
+  setInterval(draw,5);
 }
 
 function draw()
