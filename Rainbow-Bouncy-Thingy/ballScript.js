@@ -7,7 +7,7 @@ var dy=0;
 function init()
 {
   context= Canvas.getContext('2d');
-  setInterval(draw,10);
+  setInterval(draw,2);
 }
 
 function draw()
