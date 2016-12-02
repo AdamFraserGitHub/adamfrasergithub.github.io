@@ -47,26 +47,26 @@ function update(){
 
     ctx.clearRect(0,0,width,height);
 
-  ctx.fillStyle = 'rgb(255,0,0)';
-  ctx.fillRect(0,0, width/7,height);
+//   ctx.fillStyle = 'rgb(255,0,0)';
+//   ctx.fillRect(0,0, width/7,height);
   
-  ctx.fillStyle = 'rgb(255,150,0)';
-  ctx.fillRect(width/7,0, width/7*2,height);
+//   ctx.fillStyle = 'rgb(255,150,0)';
+//   ctx.fillRect(width/7,0, width/7*2,height);
   
-  ctx.fillStyle = 'rgb(255,255,0)';
-  ctx.fillRect(width/7*2,0, width/7*3,height);
+//   ctx.fillStyle = 'rgb(255,255,0)';
+//   ctx.fillRect(width/7*2,0, width/7*3,height);
   
-  ctx.fillStyle = 'rgb(0,255,0)';
-  ctx.fillRect(width/7*3,0, width/7*4,height);
+//   ctx.fillStyle = 'rgb(0,255,0)';
+//   ctx.fillRect(width/7*3,0, width/7*4,height);
   
-  ctx.fillStyle = 'rgb(0,255,255)';
-  ctx.fillRect(width/7*4,0, width/7*5,height);
+//   ctx.fillStyle = 'rgb(0,255,255)';
+//   ctx.fillRect(width/7*4,0, width/7*5,height);
   
-  ctx.fillStyle = 'rgb(0,0,255)';
-  ctx.fillRect(width/7*5,0, width/7*6,height);
+//   ctx.fillStyle = 'rgb(0,0,255)';
+//   ctx.fillRect(width/7*5,0, width/7*6,height);
   
-  ctx.fillStyle = 'rgb(255,0,255)';
-  ctx.fillRect(width/7*6,0, width,height);
+//   ctx.fillStyle = 'rgb(255,0,255)';
+//   ctx.fillRect(width/7*6,0, width,height);
 
   ctx.fillStyle = 'rgb(255,0,0)';
   ctx.fillRect(x[0],y[0], 5,20);
