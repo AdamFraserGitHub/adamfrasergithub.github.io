@@ -34,6 +34,8 @@ var charictar, ground,
 	blockType[3].x = scrWidth/6 + 180 -blockType[3].width;
 	blockType[3].y = scrHeight/2 - blockType[3].drawHeight;
 
+	blockType[4].x = scrWidth/6 + 240 -blockType[4].width;
+	blockType[4].y = scrHeight/2 - blockType[4].height;
 
 	//ground properties
 	ground = {
@@ -41,6 +43,9 @@ var charictar, ground,
 		width: 2,
 		fillColor: 'rgb(0,0,0)',
 	};
+
+	canvas.imageSmoothingEnabled = false;
+
 
 	setInterval(timer,	1000/30); 
 	
@@ -79,32 +84,14 @@ var charictar, ground,
 		ctx.fillStyle = ground.fillColor;
 		ctx.fillRect(0,ground.height,	scrWidth,ground.width);
 
-		//Draw normal block
-		ctx.fillStyle = blockType[0].fillColor;
-		ctx.fillRect(blockType[0].x,blockType[0].y,    blockType[0].width,blockType[0].height);
+		blockType[0].drawBlock(); //Draw normal block
+		blockType[1].drawBlock(); //Draw bouncy block
+		blockType[2].drawBlock(); //Draw invisible block																								
+		blockType[3].drawBlock(); //Draw slimy block
+		blockType[4].drawBlock(); //Draw rainbow block
 
-		//Draw bounce block
-		ctx.fillStyle = blockType[1].fillColor;
-		ctx.fillRect(blockType[1].x,blockType[1].y,    blockType[1].width,blockType[1].height);
+		panel(); //debug panel
 
-		//Draw invisible block
-		ctx.strokeStyle = blockType[2].strokeColor;
-		ctx.lineWidth = blockType[2].strokeWidth;
-		ctx.rect(blockType[2].x,blockType[2].y,blockType[2].width,blockType[2].height);
-		ctx.stroke();
-
-		//Draw slime block
-		ctx.fillStyle = blockType[3].fillColor;
-		ctx.fillRect(blockType[3].x,blockType[3].y,    blockType[3].width,blockType[3].drawHeight);
-
-		//debug panel
-		ctx.fillStyle = 'rgb(0,0,0)';
-  		ctx.font = "10px serif";
-  		ctx.fillText(charictar.vY, scrWidth - 100, 10);
-		ctx.fillText(charictar.y,	scrWidth - 100, 20);
-		ctx.fillText("scrHeight: " + scrHeight/2,	scrWidth - 100, 30);
-		ctx.fillText(yBoundryActive[3],	scrWidth - 100, 40);
-		ctx.fillText(keyPress[38],	scrWidth - 100, 50);
 	}
 
 
@@ -124,7 +111,7 @@ var charictar, ground,
 			charictar.vY = -charictar.jumpHeight;
 			gameStart = true;	
 			}
-		for(var i = 0; i < 4; i++){
+		for(var i = 0; i < 5; i++){
 			if (keyPress[38] && yBoundryActive[i] == true){
 			charictar.vY = -charictar.jumpHeight;
 			}
@@ -133,10 +120,11 @@ var charictar, ground,
 
 
 	function boundryChecker(){
-		blockType[0].checkBoundry();
-		blockType[1].checkBoundry();
-		blockType[2].checkBoundry();
-		blockType[3].checkBoundry();	
+		blockType[0].checkBoundry(); //Check normal block boundry
+		blockType[1].checkBoundry(); //Check bouncy block boundry
+		blockType[2].checkBoundry(); //Check invisible block boundry
+		blockType[3].checkBoundry(); //Check slimy block boundry
+		blockType[4].checkBoundry(); //Check rainbow block boundry
 	}
 
 
