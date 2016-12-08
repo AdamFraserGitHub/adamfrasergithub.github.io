@@ -16,6 +16,7 @@ yDis = y*75;
 
 var c=document.getElementById("Canvas");
 var ctx=c.getContext("2d");
+
 ctx.beginPath();
 ctx.moveTo(xDis,yDisTemp);
 ctx.lineTo(xDis + 25,250 - yDis);
@@ -36,6 +37,12 @@ if (250 - yDis < 200){
 }
 
 xDis +=25;
+
+ctx.beginPath();
+ctx.fillStyle = 'rgb(255,0,0)';
+ctx.moveTo(0,200);
+ctx.lineTo(1000,100);
+ctx.stroke();
 }
 
 //xDis = scale
