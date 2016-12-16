@@ -1,4 +1,4 @@
-var charictar, ground, obstacle,
+var charictar, ground,
     ctx = Canvas.getContext("2d"),
 	canvas = document.getElementById("Canvas"),
     scrWidth = window.innerWidth,
@@ -7,37 +7,45 @@ var charictar, ground, obstacle,
     Score = 0,
 	Gravity = 1,
 	gameStart = false,
-	yBoundryActive = false;
+	yBoundryActive = [];
 
 	//charictar properties
 	charictar = {
 		width:	10,
 		height:	10,
-		x:	scrWidth /4 *3,
+		x:	scrWidth /10,
 		y:	scrHeight /2 -10 , //10 = charictar.height
-		color:	'rgb(255,225,25)',
+		fillColor:	'rgb(255,225,25)',
 		speed:	6,
 		jumpHeight:	6,
 		vX:	0,
 		vY:	0
 	};
 
-	//obstacle properties
-	obstacle = {
-		x:	scrWidth/2 - 50,
-		y:	scrHeight/2 - 15,
-		width:	50,	
-		height:	15,
-		color:	'rgb(255,0,145)',
-	};
+	blockType[0].x = scrWidth/6 -blockType[0].width;
+	blockType[0].y = scrHeight/2 - blockType[0].height;
 
+	blockType[1].x = scrWidth/6 + 60  -blockType[1].width
+	blockType[1].y = scrHeight/2 - blockType[1].height;
+
+	blockType[2].x = scrWidth/6 + 120 -blockType[2].width;
+	blockType[2].y = scrHeight/2 - blockType[2].height;
+
+	blockType[3].x = scrWidth/6 + 180 -blockType[3].width;
+	blockType[3].y = scrHeight/2 - blockType[3].drawHeight;
+
+	blockType[4].x = scrWidth/6 + 240 -blockType[4].width;
+	blockType[4].y = scrHeight/2 - blockType[4].height;
 
 	//ground properties
 	ground = {
 		height: scrHeight /2,
 		width: 2,
-		color: 'rgb(145,0,255)',
+		fillColor: 'rgb(0,0,0)',
 	};
+
+	canvas.imageSmoothingEnabled = false;
+
 
 	setInterval(timer,	1000/30); 
 	
@@ -66,26 +74,24 @@ var charictar, ground, obstacle,
 		ctx.clearRect(0,0,	scrWidth,scrHeight);
 
 		//Draw BG
-		canvas.style.backgroundColor = 'rgb(20,190,205)';
+		canvas.style.backgroundColor = 'rgb(255,255,255)';
 
 		//Draw charictar
-		ctx.fillStyle = charictar.color;
+		ctx.fillStyle = charictar.fillColor;
 		ctx.fillRect(charictar.x,charictar.y,	charictar.width,charictar.height);
 
 		//Draw ground
-		ctx.fillStyle = ground.color;
+		ctx.fillStyle = ground.fillColor;
 		ctx.fillRect(0,ground.height,	scrWidth,ground.width);
 
-		//Draw obstacle
-		ctx.fillStyle = obstacle.color;
-		ctx.fillRect(obstacle.x,obstacle.y,    obstacle.width,obstacle.height);
+		blockType[0].drawBlock(); //Draw normal block
+		blockType[1].drawBlock(); //Draw bouncy block
+		blockType[2].drawBlock(); //Draw invisible block																								
+		blockType[3].drawBlock(); //Draw slimy block
+		blockType[4].drawBlock(); //Draw rainbow block
 
-		//debug panel
-		ctx.fillStyle = 'rgb(0,0,0)';
-  		ctx.font = "10px serif";
-  		ctx.fillText(charictar.vY, scrWidth - 100, 10);
-		ctx.fillText(charictar.y,	scrWidth - 100, 20);
-		ctx.fillText("scrHeight: " + scrHeight/2,	scrWidth - 100, 30);
+		panel(); //debug panel
+
 	}
 
 
@@ -104,30 +110,21 @@ var charictar, ground, obstacle,
 		if (keyPress[38] && charictar.y == ground.height - charictar.height){
 			charictar.vY = -charictar.jumpHeight;
 			gameStart = true;	
-		} else if (keyPress[38] && yBoundryActive == true){
+			}
+		for(var i = 0; i < 5; i++){
+			if (keyPress[38] && yBoundryActive[i] == true){
 			charictar.vY = -charictar.jumpHeight;
+			}
 		}
-
 	}
 
 
 	function boundryChecker(){
-		if (obstacle.x <= charictar.x + charictar.width && charictar.x < obstacle.x + obstacle.width /2 && charictar.y + charictar.height > obstacle.y){
-			charictar.x = obstacle.x - charictar.width; 
-		}
-		
-		if (obstacle.x + obstacle.width > charictar.x && charictar.x >= obstacle.x && charictar.y + charictar.height > obstacle.y){
-			charictar.x = obstacle.x + obstacle.width;
-		}
-
-		if (obstacle.y <= charictar.y + charictar.height && charictar.x + charictar.width > obstacle.x && charictar.x < obstacle.x + obstacle.width && charictar.vY >= 0){
-			// charictar.y = obstacle.y - charictar.height;
-			charictar.vY = 0;
-			yBoundryActive = true;
-		} else {
-			yBoundryActive = false;
-		}
-		
+		blockType[0].checkBoundry(); //Check normal block boundry
+		blockType[1].checkBoundry(); //Check bouncy block boundry
+		blockType[2].checkBoundry(); //Check invisible block boundry
+		blockType[3].checkBoundry(); //Check slimy block boundry
+		blockType[4].checkBoundry(); //Check rainbow block boundry
 	}
 
 
@@ -141,7 +138,8 @@ var charictar, ground, obstacle,
 			charictar.vY += Gravity;
 		} 
 
-		if (charictar.y == ground.height -charictar.height){
+		if (charictar.y >= ground.height -charictar.height){
+			charictar.y = scrHeight/2 - charictar.height;
 			charictar.vY = 0;
 		} else if (charictar.vY == 0 && gameStart == true && charictar.y < (scrHeight/2 + charictar.y)){
 			charictar.vY += Gravity;
