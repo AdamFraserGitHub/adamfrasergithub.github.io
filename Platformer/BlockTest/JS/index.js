@@ -7,7 +7,8 @@ var charictar, ground,
     Score = 0,
 	Gravity = 1,
 	gameStart = false,
-	yBoundryActive = [];
+	yBoundryActive = [],
+	clearScreen = true;
 
 	//charictar properties
 	charictar = {
@@ -44,7 +45,7 @@ var charictar, ground,
 		fillColor: 'rgb(0,0,0)',
 	};
 
-	canvas.imageSmoothingEnabled = false;
+	// canvas.imageSmoothingEnabled = false;
 
 
 	setInterval(timer,	1000/30); 
@@ -59,26 +60,38 @@ var charictar, ground,
 
 	function dynamicDeclerations(){
 
-		//updates scrWidth + scrHeight variables so game scale can change dynamicly
-		scrWidth = window.innerWidth;
-    	scrHeight = window.innerHeight;
+		if (canvas.width != window.innerWidth || canvas.height != window.innerHeight){
+			//updates scrWidth + scrHeight variables so game scale can change dynamicly
+			scrWidth = window.innerWidth;
+    		scrHeight = window.innerHeight;
 		
-		//reasigns canvas size
-		canvas.width = scrWidth
-		canvas.height = scrHeight
+			//reasigns canvas size
+			canvas.width = scrWidth
+			canvas.height = scrHeight
+		}
 	}
 
 	function draw(){
 
-		//clears the screen so last frame doesnt stay
-		ctx.clearRect(0,0,	scrWidth,scrHeight);
+		// clears the screen so last frame doesnt stay while adhering to the rainbow block effect
+		//(will find a better way to implement this cuz this is shite)
+		if (clearScreen){
+			ctx.clearRect(0,0,	scrWidth,scrHeight);
+		} else if (!clearScreen){
+			ctx.clearRect(0,0,	charictar.x - 20,charictar.y + charictar.height);
+			ctx.clearRect(0,charictar.y + charictar.height,	charictar.x,scrHeight);
+			ctx.clearRect(charictar.x, 0,	scrWidth - charictar.x,charictar.y + charictar.height);
+			ctx.clearRect(charictar.x, charictar.y + charictar.height,	scrWidth - charictar.x, scrHeight - (charictar.y - charictar.height));
 
-		//Draw BG
-		canvas.style.backgroundColor = 'rgb(255,255,255)';
+		}
 
 		//Draw charictar
-		ctx.fillStyle = charictar.fillColor;
-		ctx.fillRect(charictar.x,charictar.y,	charictar.width,charictar.height);
+		if (yBoundryActive[4]){
+			charictarDraw.rainbowSkin();
+		} else {
+			ctx.fillStyle = charictar.fillColor;
+			ctx.fillRect(charictar.x,charictar.y,	charictar.width,charictar.height);
+		}
 
 		//Draw ground
 		ctx.fillStyle = ground.fillColor;
