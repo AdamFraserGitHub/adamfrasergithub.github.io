@@ -12,10 +12,10 @@ function seccondAngle(firstAngle, trigFunction, units) {
     //sine calculator
     if (trigFunction == "sin") {
         if (units == "deg") {
-            if (firstAngle >= 0) {
+            if (firstAngle >= 0 && firstAngle <= 180) {
                 return 180 - firstAngle; 
-            } else if (firstAngle < 0) {
-                return 180 + firstAngle;
+            } else if (firstAngle < 0 || firstAngle > 180) {
+                return 360 - (firstAngle - 180);
             }
         } else if (units == "rad") {
             if (firstAngle >= 0) {

@@ -24,19 +24,19 @@
                         <div class="panel-body">
                             
                             <!--function selection-->
-                            <h4>function: sine</h4>
+                            <h4 id="functionTitle">function: sine</h4>
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-primary">Sine</button>
-                                <button type="button" class="btn btn-primary">Cosine</button>
-                                <button type="button" class="btn btn-primary">Tangent</button>
+                                <button type="button" class="btn btn-primary" onclick="sineSelected()">Sine</button>
+                                <button type="button" class="btn btn-primary" onclick="cosineSelected()">Cosine</button>
+                                <button type="button" class="btn btn-primary" onclick="tangentSelected()">Tangent</button>
                             </div>
                             <br/>
                             
                             <!--units selection-->
-                            <h4>units: degrees</h4>
+                            <h4 id="unitsTitle">units: degrees</h4>
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-primary">° deg</button>
-                                <button type="button" class="btn btn-primary">r radians</button>
+                                <button type="button" class="btn btn-primary" onclick="degreesSelected()">° deg</button>
+                                <button type="button" class="btn btn-primary" onclick="radiansSelected()">r radians</button>
                             </div>
                             <br/>
                             
@@ -65,10 +65,10 @@
         <canvas id="functionDiagram" width="900" height="410"></canvas>
     </body>
     
+    <script src="JS/controlInterface.js"></script>
     <script src="JS/trigCalculations.js"></script>
     <script src="JS/CASTDiagram.js"></script>
     <script src="JS/functionGraphDiagram.js"></script>
-    <script src="JS/controlInterface.js"></script>
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
     <style>
         tr.row1 > td {

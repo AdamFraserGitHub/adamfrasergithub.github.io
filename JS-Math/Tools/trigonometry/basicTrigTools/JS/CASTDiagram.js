@@ -27,4 +27,16 @@ CASTDiagramCtx.lineTo(scrWidth/2,scrHeight/2 - scrHeight/2 + 15);
 CASTDiagramCtx.closePath();
 CASTDiagramCtx.stroke();
 
+//adds labels to CAST diagram
+CASTDiagramCtx.fillStyle = 'rgb(0,0,255)';
+CASTDiagramCtx.font = "12px Arial";
+CASTDiagramCtx.fillText("0°/360°",scrWidth - 67,scrHeight/2 - 5);
+CASTDiagramCtx.fillText("90°",scrWidth/2 -20,40);
+CASTDiagramCtx.fillText("180°",30,scrHeight/2 + 15);
+CASTDiagramCtx.fillText("270°",scrWidth/2 + 5,scrHeight - 30);
 
+CASTDiagramCtx.font = "18px Arial";
+CASTDiagramCtx.fillText("x",scrWidth*2/3,scrHeight*1/3);
+CASTDiagramCtx.fillText("180 - x",scrWidth*1/3 - 20,scrHeight*1/3);
+CASTDiagramCtx.fillText("180 + x",scrWidth*1/3 - 20,scrHeight*2/3);
+CASTDiagramCtx.fillText("360 - x",scrWidth*2/3 - 20,scrHeight*2/3);
