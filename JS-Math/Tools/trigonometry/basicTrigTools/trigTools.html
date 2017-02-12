@@ -1,0 +1,78 @@
+<html>
+    <!--makes doccument touch top edge-->
+    <style>html, body{margin:0px; padding:3px;}</style>
+    
+    <title>Basic Trig Tools</title>
+    <head>
+    
+    </head>
+    
+    <body>
+        <table width="100%">
+            <tr class="row1">
+                <td>
+                    <!--dynamic CAST visualisation diagram-->
+                    <canvas id="CASTDiagram" width="400" height="400"></canvas>
+                </td>
+                
+                <td>
+                    <!--Setting panel-->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Settings</h3>
+                        </div>
+                        <div class="panel-body">
+                            
+                            <!--function selection-->
+                            <h4>function: sine</h4>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary">Sine</button>
+                                <button type="button" class="btn btn-primary">Cosine</button>
+                                <button type="button" class="btn btn-primary">Tangent</button>
+                            </div>
+                            <br/>
+                            
+                            <!--units selection-->
+                            <h4>units: degrees</h4>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary">° deg</button>
+                                <button type="button" class="btn btn-primary">r radians</button>
+                            </div>
+                            <br/>
+                            
+                            <!--angle to find (origional/PA)-->
+                            <h4>angle To Find: 2</h4>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary">1</button>
+                                <button type="button" class="btn btn-primary">2</button>
+                            </div>
+                            <br/>
+                            
+                            <!--input for accuracy that can't be esialy input with mouse-->
+                            <h4>acurate angle input</h4>
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                                <span class="input-group-addon">°</span>
+                            </div>
+                            <button class="btn btn-primary">Calculate</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        <!--dynamic function graph visualisation diagram-->
+        <canvas id="functionDiagram" width="900" height="410"></canvas>
+    </body>
+    
+    <script src="JS/trigCalculations.js"></script>
+    <script src="JS/CASTDiagram.js"></script>
+    <script src="JS/functionGraphDiagram.js"></script>
+    <script src="JS/controlInterface.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+    <style>
+        tr.row1 > td {
+            padding-bottom: 50px;
+        }
+    </style>
+</html>
