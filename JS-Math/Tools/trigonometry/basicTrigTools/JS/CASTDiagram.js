@@ -52,11 +52,16 @@ function controllsForThingy(e){
         var x = 400/2 - e.clientX,
             y =(400/2 - (e.clientY -130));
 
-        theta = Math.atan(y/x) * (180/Math.PI);
-    } else if(e.clientX < 200 && e.clientY <= 200 + 130){
+        theta = 180 - (Math.atan(y/x) * (180/Math.PI));
+    } else if(e.clientX <= 200 && e.clientY > 200 + 130){
         var x = 400/2 - e.clientX,
             y =(400/2 - (e.clientY -130));
 
-        theta = Math.atan(y/x) * (180/Math.PI);
+        theta = 180 - (Math.atan(y/x) * (180/Math.PI));
+    } else if(e.clientX > 200 && e.clientY > 200 + 130){
+        var x = 400/2 - e.clientX,
+            y =(400/2 - (e.clientY -130));
+
+        theta = 360 - (Math.atan(y/x) * (180/Math.PI));
     }
 }
