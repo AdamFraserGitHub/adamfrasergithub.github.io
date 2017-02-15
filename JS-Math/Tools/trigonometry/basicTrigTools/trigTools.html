@@ -1,18 +1,15 @@
 <html>
     <!--makes doccument touch top edge-->
-    <style>html, body{margin:0px; padding:3px;}</style>
+    <style>html, body{margin-left:0px; margin-top:10px; margin-right:10px; }</style>
     
     <title>Basic Trig Tools</title>
-    <head>
-    
-    </head>
     
     <body>
         <table width="100%">
             <tr class="row1">
                 <td>
                     <!--dynamic CAST visualisation diagram-->
-                    <canvas id="CASTDiagram" width="400" height="400"></canvas>
+                    <canvas id="CASTDiagram" width="400" height="400" onmousemove="controllsForThingy(event)" onmouseout="ALET()"></canvas>
                 </td>
                 
                 <td>
@@ -57,6 +54,38 @@
                             <button class="btn btn-primary">Calculate</button>
                         </div>
                     </div>
+                    
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Results</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table">
+                              <thead class="thead-inverse">
+                                <tr>
+                                  <th>Angle</th>
+                                  <th>Value</th>
+                                    <th><i>y</i> value</th>
+                                  <th>Quadrant</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">1</th>
+                                  <td id="angle1ValueOutput"></td>
+                                  <td id="angle1YValueOutput"></td>
+                                  <td id="angle1QuadrantOutput"></td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">2</th>
+                                  <td id="angle2ValueOutput"></td>
+                                  <td id="angle2YValueOutput"></td>
+                                  <td id="angle2QuadrantOutput"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </td>
             </tr>
         </table>
@@ -69,10 +98,6 @@
     <script src="JS/trigCalculations.js"></script>
     <script src="JS/CASTDiagram.js"></script>
     <script src="JS/functionGraphDiagram.js"></script>
+    <script src="JS/outputInterface.js"></script>
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-    <style>
-        tr.row1 > td {
-            padding-bottom: 50px;
-        }
-    </style>
 </html>

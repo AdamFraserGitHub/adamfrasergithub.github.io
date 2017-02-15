@@ -40,3 +40,23 @@ CASTDiagramCtx.fillText("x",scrWidth*2/3,scrHeight*1/3);
 CASTDiagramCtx.fillText("180 - x",scrWidth*1/3 - 20,scrHeight*1/3);
 CASTDiagramCtx.fillText("180 + x",scrWidth*1/3 - 20,scrHeight*2/3);
 CASTDiagramCtx.fillText("360 - x",scrWidth*2/3 - 20,scrHeight*2/3);
+
+function controllsForThingy(e){
+    var lool = true;
+    if(e.clientX >= 200 && e.clientY <= 200 + 130){
+        var x = e.clientX - 400/2,
+            y =(400/2 - (e.clientY -130));
+
+        theta = Math.atan(y/x) * (180/Math.PI);
+    } else if(e.clientX < 200 && e.clientY <= 200 + 130){
+        var x = 400/2 - e.clientX,
+            y =(400/2 - (e.clientY -130));
+
+        theta = Math.atan(y/x) * (180/Math.PI);
+    } else if(e.clientX < 200 && e.clientY <= 200 + 130){
+        var x = 400/2 - e.clientX,
+            y =(400/2 - (e.clientY -130));
+
+        theta = Math.atan(y/x) * (180/Math.PI);
+    }
+}

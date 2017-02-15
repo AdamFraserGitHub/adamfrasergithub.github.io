@@ -47,18 +47,31 @@ function sineGraph() {
 //pointer system
 function pointerSystem() {
     var x0 = theta/360 * scrWidth,
-        y0 = scrHeight/2 - (Math.sin(theta/180 * Math.PI) * scrHeight/2) + 5,
         x1 = seccondAngle(theta,trigFunction,units)/360 * scrWidth,
-        y1 = scrHeight/2 - (Math.sin(seccondAngle(theta,trigFunction,units)/180 * Math.PI) * scrHeight/2) + 5;
+        y = scrHeight/2 - (Math.sin(theta/180 * Math.PI) * scrHeight/2) + 5;
+    
+    //line
     functionDiagramCtx.beginPath();
-    functionDiagramCtx.fillStyle = 'rgb(255,0,255)';
-    functionDiagramCtx.arc(x0,y0,5,0,Math.PI*2,false);
-    functionDiagramCtx.arc(x1,y1,5,0,Math.PI*2,false);
+    functionDiagramCtx.moveTo(0,y);
+    functionDiagramCtx.lineTo(scrWidth,y);
+    functionDiagramCtx.stroke();
+    functionDiagramCtx.closePath();
+    
+    //points (soln x)
+    functionDiagramCtx.beginPath();
+    functionDiagramCtx.fillStyle = 'rgb(150,0,255)';
+    functionDiagramCtx.arc(x0,y,5,0,Math.PI*2,false);
+    functionDiagramCtx.arc(x1,y,5,0,Math.PI*2,false);
+    functionDiagramCtx.fill();
+    functionDiagramCtx.closePath();
+    functionDiagramCtx.beginPath();
+    functionDiagramCtx.fillStyle = 'rgb(255,0,150)';
+    functionDiagramCtx.arc(x1,y,5,0,Math.PI*2,false);
     functionDiagramCtx.fill();
     functionDiagramCtx.closePath();
     
-    theta+=2;
-    if (theta > 360) {
-        theta = 0;
-    }
+//    theta+=0.5;
+//    if (theta > 360) {
+//        theta = 0;
+//    }
 }
