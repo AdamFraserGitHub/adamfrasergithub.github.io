@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>clue filler</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <textarea name="" id="inputNum" placeholder="output for clues" cols="30" rows="10"></textarea>
+        <p href="">if a number appears like this [2!]   [12!]   [71!] etc. then it's clue hasn't been added to the data file, message me and ill add it</p>
+        <p href="">the box at the top is resizable and it should contain your question!</p>
+
+    </body>
+
+  <script>
+    cluesData = "87@;\n\
+39@-65\n\
+79@civil\n\
+52@528\n\
+100@henry\n\
+22@-k\n\
+48@)\n\
+43@144\n\
+67@equilatiral triangle\n\
+9@netwon\n\
+75@(\n\
+44@katal\n\
+26@610\n\
+45@fncnsndhrnvrss\n\
+49@1/(4pi)\n\
+20@1+root(k)\n\
+50@(x^3+x^2+x)\n\
+93@(x^4+x^3+x^2+x)\n\
+54@_ _ _^3\n\
+70@lovelace\n\
+71@_ 1 _ _ _ _ _\n\
+72@hxndhnrllgfx\n\
+74@regular hexagon\n\
+75@(\n\
+100@henry\n\
+76@4\n\
+77@1+root(7)\n\
+78@6\n\
+79@civil\n\
+81@pascal\n\
+98@625\n\
+83@210\n\
+84@729\n\
+86@lux\n\
+87@;\n\
+88@hardy\n\
+89@36\n\
+98@625\n\
+91@37\n\
+92@8\n\
+93@(x^4+x^3+x^2+x)\n\
+94@latex\n\
+95@1+3root(2)\n\
+99@lisp\n\
+1@1+root(5)\n\
+13@-11\n\
+25@55\n\
+37@1+3root(2)\n\
+49@1/(4pi)\n\
+61@19\n\
+2@k\n\
+14@0\n\
+26@610\n\
+38@circle\n\
+50@(x^3+x^2+x)\n\
+75@regular hexagon\n\
+86@lux\n\
+3@(x^2+x)\n\
+27@vivid\n\
+39@-65\n\
+51@34\n\
+63@100\n\
+75@(\n\
+87@;\n\
+4@12\n\
+16@101\n\
+28@cobra\n\
+40@2\n\
+52@528\n\
+64@Tesla\n\
+76@4\n\
+88@Hardy\n\
+58@,\n\
+47@5\n\
+66@1+2root(5)\n\
+11@3\n\
+68@21\n\
+33@51\n\
+23@11\n\
+41@41\n\
+47@5\n\
+35@mix\n\
+7@sharp\n\
+53@mill\n\
+21@(root(3)/36)\n\
+12@square\n\
+59@(1/16)";
+
+dataParse = cluesData.split("\n")
+
+for (var i = 0; i < dataParse.length; i++){
+    dataParse[i] = dataParse[i].split("@")
+}
+
+function findClue(clueNumber){
+    //searches for clue if found returns array
+    //where first index is the clue number and the
+    //seccond is the clue. if not fount it returns  false
+    clueEntry = false
+    for(var i = 0; i < dataParse.length; i++) {
+
+        if (dataParse[i][0] == clueNumber) {
+            console.log(dataParse[i][1])
+            clueEntry = dataParse[i]
+            break
+        }
+
+    }
+    
+    return clueEntry
+}
+
+
+// EWW
+toDecode = prompt("please enter your clue numbers sepperated by '-' e.g. 1-2-3-4...")
+
+cluesDecode = toDecode.split('-')
+
+question = ""
+for (var i = 0; i < cluesDecode.length; i++) {
+    clueFound = findClue(cluesDecode[i])
+
+    if(clueFound) {
+        question += (clueFound[1])
+    }
+    else {
+        question +=('[' + cluesDecode[i][0] + '!]')
+    }
+}
+
+document.getElementById('inputNum').innerHTML = question;
+
+
+  </script>
+</html>
