@@ -1,7 +1,7 @@
 var avgPriceGraph = document.getElementById('avgGoodPriceGraph');
 var avgPriceCanvas = avgPriceGraph.getContext('2d')
-var avgPriceCanvasW = avgPriceGraph.width = Math.floor(window.innerWidth * 0.6);
-var avgPriceCanvasH = avgPriceGraph.height = Math.floor(window.innerHeight * 0.6);
+var avgPriceCanvasW = avgPriceGraph.width = Math.floor(window.innerWidth * 0.9);
+var avgPriceCanvasH = avgPriceGraph.height = Math.floor(window.innerHeight * 0.5);
 
 avgPriceCanvas.translate(0.5,0.5) //prevents blurriness in lines (just how the API works)
 
@@ -53,7 +53,8 @@ function renderGraph() {
 
 var t = 0;
 var atEdgeGraph = false;
-var maxPossiblePrice = 1;
+var maxPossiblePrice = 1.2;
+// var maxPossiblePrice = 50;
 function addDataPointToGraph(priceValue) {
     var xDraw = t + 5 + 1; // the x point that the price will be drawn at to avoid drawing over anything else
     //finds the value as a fraction of the maximum possible value, maps that the the size of the graph and then 

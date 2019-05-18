@@ -249,7 +249,7 @@ function runRound() {
     if(demandShockTurns > 0) {
         // console.log("demand shock!!!")
         for(var i = 0; i < buyers.length; i++) {
-            buyers[i].buyPrice *= (1 - Math.random()*0.05);
+            buyers[i].buyPrice *= (1 - Math.random()*0.1);
         }
         demandShockTurns --;
     }
